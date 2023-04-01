@@ -53,9 +53,13 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+
+    // public function show(User $user) injeção de dependencia implicita
+    public function show($user) // injeção de dependencia explicita-> olhar em Providers>Route
     {
-        $user = User::find($id);
+        // if(!$id) return 'ID NULO';
+
+        // $user = User::find($id);
 
         return view('user.show', [
             'user' => $user
@@ -87,11 +91,11 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        
+
         $userData = $request->only(['name','email']);
 
         $user->update($userData);
-        
+
         return redirect('/');
     }
 
