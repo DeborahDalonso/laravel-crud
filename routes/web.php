@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UsersController;
+use App\Http\Middleware\MyFirstMiddleware;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,11 @@ Route::get('/user/edit/{id}', [UsersController::class, 'edit'])->name('user.edit
 Route::put('/user/update/{id}', [UsersController::class, 'update'])->name('user.update');
 Route::delete('/user/delete/{id}', [UsersController::class, 'destroy'])->name('user.destroy');
 
+// Instanciando o middleware diretamente na rota
+// Route::get('/users', [UsersController::class, 'index'])->middleware(\App\Http\Middleware\MyFirstMiddleware::class)->name('user.index');
 
+//Instanciando no Kernel
+// Route::get('/users', [UsersController::class, 'index'])->middleware(['myFirstMiddleware'])->name('user.index');
+
+//Passando um parametro, uma role 
+Route::get('/users', [UsersController::class, 'index'])->middleware(['myFirstMiddleware:Admin'])->name('user.index');
