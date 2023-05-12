@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use \App\Models\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -39,8 +40,15 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $userData = $request->only(['name','email']);
-        $userData['password'] = bcrypt('password');
+        //O ideal é fazer uma validação por uma classe propria Request, mas é possivel usar o Request padrão
+        //É necessário passar um array de regras
+        $request->validate([
+            'name' => 'string|required', //tbm é possivel ['required','string']
+            'email' => 'email|required|unique:users', //quando voce usa o unique voce deve especificar a tabela
+            'password' => 'string|required|min:8|max:16'
+        ]);
+
+        $userData = $request->only(['name','email','password']);
 
         User::create($userData);
 
@@ -86,12 +94,18 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'string|required', //tbm é possivel ['required','string']
+            'email' => 'email|required|unique:users', //quando voce usa o unique voce deve especificar a tabela
+            'password' => 'string|required|min:8|max:16'
+        ]);
+
         $user = User::find($id);
-        
-        $userData = $request->only(['name','email']);
+
+        $userData = $request->all();
 
         $user->update($userData);
-        
+
         return redirect('/');
     }
 
@@ -104,6 +118,9 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+
+        if(!$user) Throw new ModelNotFoundException();
+
         $user->delete();
 
         return redirect()->back();

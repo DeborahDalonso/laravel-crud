@@ -26,6 +26,10 @@
                     <label  for="email" class="form-label">Email</label>
                     <input type="email" name="email" class="form-control" value="{{ $user->email }}">
                 </div>
+                <div class="mb-3 col-md-3">
+                    <label  for="password" class="form-label">Senha</label>
+                    <input type="password" name="password" class="form-control" value="{{ $user->password }}">
+                </div>
             </div>
             <div class="mb-3 col-md-3">
                 <button type="submit" class="btn btn-primary">Edit</button>
