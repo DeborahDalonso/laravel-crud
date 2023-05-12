@@ -25,15 +25,20 @@ class UserStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string|required',
-            'email' => 'email|required'
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'password' => 'required',
+            'term' => 'accepted'
         ];
     }
 
     public function messages()
     {
         return [
-            'name.string' => 'O nome deve ser uma string!'
+            'name.string' => 'O nome deve ser uma string!', //aqui especificamos a validação para todo campo name
+            'required' => 'Esse campo é obrigatório', //aqui deixamos amplo
+            'email' => 'Esse campo deve ser um email',
+            'term.accepted' => 'Para criar um usuário é necessário aceitar os termos de uso'
         ];
     }
 }

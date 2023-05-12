@@ -19,11 +19,45 @@
             <div class="row">
                 <div class="mb-3 col-md-3">
                     <label for="name" class="form-label">Nome</label>
-                    <input type="text" name="name" class="form-control">
+                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
+                        value="{{ old('name') }}">
+                    @error('name')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="mb-3 col-md-3">
-                    <label  for="email" class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                        value="{{ old('email') }}">
+                    @error('email')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="mb-3 col-md-3">
+                    <label for="password" class="form-label">Senha</label>
+                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
+                        value="{{ old('password') }}">
+                    @error('password')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="mb-3 col-md-3 form-check">
+                    <input class="form-check-input @error('term') is-invalid @enderror" type="radio" name="term"
+                        id="term">
+                    <label class="form-check-label" for="flexRadioDefaul1">
+                        Termo de uso
+                    </label>
+                    @error('term')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
             </div>
             <div class="mb-3 col-md-3">
