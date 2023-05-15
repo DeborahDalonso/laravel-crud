@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\User\UserStoreRequest;
 use \App\Models\User;
 use Illuminate\Http\Request;
 
@@ -37,10 +38,11 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    //Usando minha propria classe de request
+    public function store(UserStoreRequest $request)
     {
-        $userData = $request->only(['name','email']);
-        $userData['password'] = bcrypt('password');
+        //pega apenas os campos validados
+        $userData = $request->validated();
 
         User::create($userData);
 
