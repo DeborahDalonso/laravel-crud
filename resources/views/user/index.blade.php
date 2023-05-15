@@ -12,8 +12,8 @@
 <body>
     <main class="container">
         <h4>Users List</h4>
-        <a href="{{ route('user.create') }}" type="button" class="btn btn-primary">Create New User</a>
-        <a href="{{ route('post.create') }}" type="button" class="btn btn-primary">Create New Post</a>
+        <a href="{{ route('user.create') }}" type="button" class="btn btn-primary">New User</a>
+        <a href="{{ route('post.create') }}" type="button" class="btn btn-primary">New Post</a>
         <table class="table">
             <thead>
                 <tr>

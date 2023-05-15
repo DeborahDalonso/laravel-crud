@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,12 @@ Route::get('/user/edit/{id}', [UsersController::class, 'edit'])->name('user.edit
 Route::put('/user/update/{id}', [UsersController::class, 'update'])->name('user.update');
 Route::delete('/user/delete/{id}', [UsersController::class, 'destroy'])->name('user.destroy');
 
-
-
-
+Route::resource('/post', PostsController::class)->names([
+    'index' => 'post.index',
+    'create' => 'post.create',
+    'store' => 'post.store',
+    'show' => 'post.show',
+    'edit' => 'post.edit',
+    'update' => 'post.update',
+    'destroy' => 'post.destroy'
+]);
