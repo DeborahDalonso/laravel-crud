@@ -9,6 +9,11 @@ class Address extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'street',
+        'number'
+    ];
+    
     //Por padrão, criar essa função com o nome da tabela relacionada
     public function user()
     {

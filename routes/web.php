@@ -24,3 +24,5 @@ Route::put('/user/update/{id}', [UsersController::class, 'update'])->name('user.
 Route::delete('/user/delete/{id}', [UsersController::class, 'destroy'])->name('user.destroy');
 
 
+
+

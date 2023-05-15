@@ -28,6 +28,8 @@ class UserStoreRequest extends FormRequest
             'name' => 'required|string',
             'email' => 'required|email',
             'password' => 'required',
+            'street' => 'required|string',
+            'number' => 'required|string',
             'term' => 'accepted'
         ];
     }
@@ -38,6 +40,7 @@ class UserStoreRequest extends FormRequest
             'name.string' => 'O nome deve ser uma string!', //aqui especificamos a validação para todo campo name
             'required' => 'Esse campo é obrigatório', //aqui deixamos amplo
             'email' => 'Esse campo deve ser um email',
+            'string' => 'Esse campo deve ser uma string!',
             'term.accepted' => 'Para criar um usuário é necessário aceitar os termos de uso'
         ];
     }

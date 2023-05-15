@@ -47,6 +47,28 @@
                         </div>
                     @enderror
                 </div>
+                <div class="mb-3 col-md-3">
+                    <label for="street" class="form-label">Rua</label>
+                    <input type="text" name="street" class="form-control @error('street') is-invalid @enderror"
+                        value="{{ old('street') }}">
+                    @error('street')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-md-3">
+                    <label for="number" class="form-label">Número</label>
+                    <input type="text" name="number" class="form-control @error('number') is-invalid @enderror"
+                        value="{{ old('number') }}">
+                    @error('number')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
                 <div class="mb-3 col-md-3 form-check">
                     <input class="form-check-input @error('term') is-invalid @enderror" type="radio" name="term"
                         id="term">

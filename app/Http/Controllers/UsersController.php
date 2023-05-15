@@ -44,7 +44,8 @@ class UsersController extends Controller
         //pega apenas os campos validados
         $userData = $request->validated();
 
-        User::create($userData);
+        $user = User::create($userData);
+        $user->address()->create($userData);
 
         return redirect()->route('user.index');
     }
@@ -90,7 +91,7 @@ class UsersController extends Controller
     {
         $user = User::find($id);
 
-        $userData = $request->only(['name','email']);
+        $userData = $request->only(['name', 'email']);
 
         $user->update($userData);
 

@@ -23,12 +23,22 @@
                     <input type="text" name="name" class="form-control" value="{{ $user->name }}">
                 </div>
                 <div class="mb-3 col-md-3">
-                    <label  for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label">Email</label>
                     <input type="email" name="email" class="form-control" value="{{ $user->email }}">
                 </div>
                 <div class="mb-3 col-md-3">
-                    <label  for="password" class="form-label">Senha</label>
+                    <label for="password" class="form-label">Senha</label>
                     <input type="password" name="password" class="form-control" value="{{ $user->password }}">
+                </div>
+                <div class="mb-3 col-md-3">
+                    <label for="street" class="form-label">Rua</label>
+                    <input type="text" name="street" class="form-control value="{{ old('street') }}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-md-3">
+                    <label for="number" class="form-label">Número</label>
+                    <input type="text" name="number" class="form-control" value="{{ old('number') }}">
                 </div>
             </div>
             <div class="mb-3 col-md-3">
