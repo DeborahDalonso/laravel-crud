@@ -87,11 +87,11 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        
+
         $userData = $request->only(['name','email']);
 
         $user->update($userData);
-        
+
         return redirect('/');
     }
 
