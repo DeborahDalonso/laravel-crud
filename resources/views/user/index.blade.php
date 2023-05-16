@@ -12,8 +12,10 @@
 <body>
     <main class="container">
         <h4>Users List</h4>
-        <a href="{{ route('user.create') }}" type="button" class="btn btn-primary">New User</a>
-        <a href="{{ route('post.create') }}" type="button" class="btn btn-primary">New Post</a>
+        <div class="d-flex justify-content-between">
+            <a href="{{ route('user.create') }}" type="button" class="btn btn-primary">New User</a>
+            <a href="{{ route('post.create') }}" type="button" class="btn btn-primary">New Post</a>
+        </div>
         <table class="table">
             <thead>
                 <tr>
