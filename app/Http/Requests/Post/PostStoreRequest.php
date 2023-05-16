@@ -24,7 +24,7 @@ class PostStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|integer|exists:user,id', //para criar o post ele verifica se o user associado realmente existe, cria uma consulta na tabela user, como a consulta é em outra tabela que não a de post é necessario passar o campo da busca (id)
+            'user_id' => 'required|integer|exists:users,id', //para criar o post ele verifica se o user associado realmente existe, cria uma consulta na tabela user, como a consulta é em outra tabela que não a de post é necessario passar o campo da busca (id)
             'title' => 'required|string|unique:posts', //aqui tbm é feita uma query para consultar se o titulo é unico, como o campo title pertence a tabela posts não é necessario especificar o nome da coluna de pesquisa
             'content' => 'required|string|max:1000'
         ];

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Post\PostStoreRequest;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -41,9 +42,11 @@ class PostsController extends Controller
      */
     public function store(PostStoreRequest $request)
     {
-        $attributes = $request->validate();
+        $attributes = $request->validated();
 
-        dd($attributes);
+        Post::create($attributes);
+
+        return redirect('/');
     }
 
     /**

@@ -25,11 +25,6 @@ Route::put('/user/update/{id}', [UsersController::class, 'update'])->name('user.
 Route::delete('/user/delete/{id}', [UsersController::class, 'destroy'])->name('user.destroy');
 
 Route::resource('/post', PostsController::class)->names([
-    'index' => 'post.index',
     'create' => 'post.create',
     'store' => 'post.store',
-    'show' => 'post.show',
-    'edit' => 'post.edit',
-    'update' => 'post.update',
-    'destroy' => 'post.destroy'
 ]);
