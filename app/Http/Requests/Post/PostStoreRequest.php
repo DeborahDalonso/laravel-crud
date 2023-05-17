@@ -16,6 +16,17 @@ class PostStoreRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation()
+    {
+        $url = $this->server('HTTP_REFERER');
+
+        $userId = explode('/', $url)[6];
+
+        $this->merge([
+            'user_id' => $userId
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *

@@ -12,10 +12,7 @@
 <body>
     <main class="container">
         <h4>Users List</h4>
-        <div class="d-flex justify-content-between">
             <a href="{{ route('user.create') }}" type="button" class="btn btn-primary">New User</a>
-            <a href="{{ route('post.create') }}" type="button" class="btn btn-primary">New Post</a>
-        </div>
         <table class="table">
             <thead>
                 <tr>
@@ -40,6 +37,10 @@
                                 <div class="mb-1 col-md-2">
                                     <a href="{{ route('user.edit', $user->id) }}" type="button"
                                         class="btn btn-warning">Edit</a>
+                                </div>
+                                <div class="mb-1 col-md-3">
+                                    <a href="{{ route('post.create', $user->id) }}" type="button"
+                                        class="btn btn-primary">New Post</a>
                                 </div>
                                 <div class="mb-1 col-md-2">
                                     <form method="post" action="{{ route('user.destroy', $user->id) }}">

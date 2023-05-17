@@ -17,22 +17,7 @@
         <form method="post" action="{{ route('post.store') }}">
             @csrf
             <div class="row">
-                <div class="mb-3 col-md-6">
-                    <label for="title" class="form-label">User</label>
-                    <select name="user_id" class="form-control @error('user_id') is-invalid @enderror" id="user_id"
-                        value="{{ old('user_id') }}">
-                        <option value="">Select an user</option>
-                        @foreach ($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('user_id')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-                <div class="mb-3 col-md-6">
+                <div class="mb-3 col-md-12">
                     <label for="title" class="form-label">Title</label>
                     <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
                         value="{{ old('title') }}">

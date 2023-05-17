@@ -27,11 +27,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-
-        return view('post.create', [
-            'users' => $users
-        ]);
+        return view('post.create');
     }
 
     /**
