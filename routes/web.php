@@ -59,7 +59,7 @@ Route::delete('/user/delete/{id}', [UsersController::class, 'destroy'])->name('u
 
 //Injeção de dependencia
 // Route::get('/user/{user}', [UsersController::class, 'show'])->name('user.show');
-// Route::get('/user/{user:email}', [UsersController::class, 'show'])->name('user.show');
+// Route::get('/user/{user:email}', [UsersController::class, 'show'])->name('user.show'); //olhar no model de user!!!!
 
 //Busca com withTrashed
 // Route::get('/user/{user}', [UsersController::class, 'show'])->withTrashed()->name('user.show');
