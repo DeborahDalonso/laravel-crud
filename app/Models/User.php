@@ -42,4 +42,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    //Para configurar um outro campo para a injeção de dependencia, sempre que chamar User vai ser pesquisa por email
+    /*public function getRouteKeyName()
+    {
+        return 'email';
+    }
+    */
 }
