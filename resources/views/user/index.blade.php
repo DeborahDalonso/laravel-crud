@@ -12,13 +12,18 @@
 <body>
     <main class="container">
         <h4>Users List</h4>
+        <div class="d-flex justify-content-between">
             <a href="{{ route('user.create') }}" type="button" class="btn btn-primary">New User</a>
+            <a href="{{ route('post.create') }}" type="button" class="btn btn-primary">New Post</a>
+        </div>
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Street</th>
+                    <th scope="col">Number</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -26,9 +31,11 @@
                 @foreach ($users as $user)
                     <tr>
                         <td class="col-1">{{ $user->id }}</td>
-                        <td class="col-2">{{ $user->name }}</td>
+                        <td class="col-1">{{ $user->name }}</td>
                         <td class="col-2">{{ $user->email }}</td>
-                        <td class="col-4">
+                        <td class="col-1">{{ $user->address->street }}</td>
+                        <td class="col-1">{{ $user->address->number }}</td>
+                        <td class="col-6">
                             <div class="row">
                                 <div class="mb-1 col-md-2">
                                     <a href="{{ route('user.show', $user->id) }}" type="button"
@@ -38,9 +45,13 @@
                                     <a href="{{ route('user.edit', $user->id) }}" type="button"
                                         class="btn btn-warning">Edit</a>
                                 </div>
+                                <div class="mb-1 col-md-2">
+                                    <a href="{{ route('user.posts', $user->id) }}" type="button"
+                                        class="btn btn-primary">Posts</a>
+                                </div>
                                 <div class="mb-1 col-md-3">
-                                    <a href="{{ route('post.create', $user->id) }}" type="button"
-                                        class="btn btn-primary">New Post</a>
+                                    <a href="{{ route('user.address', $user->id) }}" type="button"
+                                        class="btn btn-dark">Address</a>
                                 </div>
                                 <div class="mb-1 col-md-2">
                                     <form method="post" action="{{ route('user.destroy', $user->id) }}">

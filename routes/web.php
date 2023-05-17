@@ -14,15 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/', [UsersController::class, 'index']);
-Route::get('/users', [UsersController::class, 'index'])->name('user.index');
-Route::get('/user/create', [UsersController::class, 'create'])->name('user.create');
-Route::post('/user/create', [UsersController::class, 'store'])->name('user.store');
-Route::get('/user/{id}', [UsersController::class, 'show'])->name('user.show');
-Route::get('/user/edit/{id}', [UsersController::class, 'edit'])->name('user.edit');
-Route::put('/user/update/{id}', [UsersController::class, 'update'])->name('user.update');
-Route::delete('/user/delete/{id}', [UsersController::class, 'destroy'])->name('user.destroy');
-
-Route::get('/post/create/user/{id}', [PostsController::class, 'create'])->name('post.create');
+Route::get('/post/create', [PostsController::class, 'create'])->name('post.create');
 Route::post('/post/create', [PostsController::class, 'store'])->name('post.store');
+
+Route::prefix('user')->controller(UsersController::class)->name('user.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::post('/create', 'store')->name('store');
+    Route::get('/{id}/details', 'show')->name('show');
+    Route::get('/{id}/edit', 'edit')->name('edit');
+    Route::get('/{id}/address', 'address')->name('address');
+    Route::get('/{id}/posts', 'posts')->name('posts');
+    Route::put('/{id}/update', 'update')->name('update');
+    Route::delete('/{id}/delete', 'destroy')->name('destroy');
+});

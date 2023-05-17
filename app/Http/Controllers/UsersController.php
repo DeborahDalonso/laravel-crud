@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\User\UserStoreRequest;
+use App\Models\Address;
 use \App\Models\User;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::with('address')->get();
 
         return view('user.index', [
             'users' => $users
@@ -38,10 +39,8 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    //Usando minha propria classe de request
     public function store(UserStoreRequest $request)
     {
-        //pega apenas os campos validados
         $userData = $request->validated();
 
         $user = User::create($userData);
@@ -110,5 +109,14 @@ class UsersController extends Controller
         $user->delete();
 
         return redirect()->back();
+    }
+
+    public function address($id)
+    {
+        $user = User::with('address')->find($id);
+        
+        return view('user.address', [
+            'user'=> $user
+        ]);
     }
 }

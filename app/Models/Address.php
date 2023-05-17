@@ -14,7 +14,6 @@ class Address extends Model
         'number'
     ];
     
-    //Por padrão, criar essa função com o nome da tabela relacionada
     public function user()
     {
         return $this->belongsTo(User::class);
