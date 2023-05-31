@@ -11,7 +11,13 @@
 
 <body>
     <main class="container">
-        <h4>Users List</h4>
+        <div class="d-flex justify-content-between">
+            <h4>Users List</h4>
+            <form action="{{ route('post.logout') }}" method="post">
+                @csrf
+                <button type="submit" class="btn btn-link">LOGOUT</button>
+            </form>
+        </div>
         <div class="d-flex justify-content-between">
             <a href="{{ route('user.create') }}" type="button" class="btn btn-primary">New User</a>
             <a href="{{ route('post.create') }}" type="button" class="btn btn-primary">New Post</a>
