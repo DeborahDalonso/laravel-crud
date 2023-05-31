@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostsController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +15,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::redirect('/', 'login');
-
-Route::get('/register', [AuthController::class, 'formRegister'])->name('register');
-Route::get('/login', [AuthController::class, 'formLogin'])->name('login'); //a rota que em authenticate vai ser redirecionada
-Route::post('/login', [AuthController::class, 'login'])->name('post.login');
-Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('post.logout');
 
 Route::get('/post/create', [PostsController::class, 'create'])->name('post.create');
 Route::post('/post/create', [PostsController::class, 'store'])->name('post.store');
@@ -40,3 +34,11 @@ Route::middleware('auth')
         Route::put('/{id}/update', 'update')->name('update');
         Route::delete('/{id}/delete', 'destroy')->name('destroy');
     });
+
+//Criado pelo laravel ui, cria todas as rotas de autenticação
+Auth::routes();
+
+//Para remover uma das rotas criadas é só passar a rota num array recebendo false como parametro, nem mesmo o botão para a rota aparece nas views criadas pelo ui
+// Auth::routes(['register'=> false]);
+
+

@@ -13,7 +13,7 @@
     <main class="container">
         <div class="d-flex justify-content-between">
             <h4>Users List</h4>
-            <form action="{{ route('post.logout') }}" method="post">
+            <form action="{{ route('logout') }}" method="post">
                 @csrf
                 <button type="submit" class="btn btn-link">LOGOUT</button>
             </form>
