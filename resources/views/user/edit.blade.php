@@ -18,31 +18,53 @@
             @csrf
             @method('put')
             <div class="row">
-                <div class="mb-3 col-md-3">
-                    <label for="name" class="form-label">Nome</label>
-                    <input type="text" name="name" class="form-control" value="{{ $user->name }}">
+                <div class="mb-3 col-md-4">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" name="name" class="form-control"
+                        value="{{ $user->name }}">
                 </div>
-                <div class="mb-3 col-md-3">
+                <div class="mb-3 col-md-4">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control" value="{{ $user->email }}">
+                    <input type="email" name="email" class="form-control"
+                    value="{{ $user->email }}">
                 </div>
-                <div class="mb-3 col-md-3">
-                    <label for="password" class="form-label">Senha</label>
-                    <input type="password" name="password" class="form-control" value="{{ $user->password }}">
-                </div>
-                <div class="mb-3 col-md-3">
-                    <label for="street" class="form-label">Rua</label>
-                    <input type="text" name="street" class="form-control value="{{ old('street') }}">
+                <div class="mb-3 col-md-4">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control"
+                    value="{{ $user->password }}">
                 </div>
             </div>
             <div class="row">
+                <div class="mb-3 col-md-5">
+                    <label for="street" class="form-label">Street</label>
+                    <input type="text" name="street" class="form-control"
+                    value="{{ $user->address->street }}">
+                </div>
                 <div class="mb-3 col-md-3">
-                    <label for="number" class="form-label">Número</label>
-                    <input type="text" name="number" class="form-control" value="{{ old('number') }}">
+                    <label for="number" class="form-label">Number</label>
+                    <input type="text" name="number" class="form-control"
+                    value="{{ $user->address->number }}">
+                   
+                </div>
+                <div class="mb-3 col-md-4">
+                    <label for="password_confirmation" class="form-label">Confirm Password:</label><br>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <input name="image" type="file" accept=".jpg, .png, .jpeg">
+            </div>
+            <div class="row">
+                <div class="mb-3 col-md-3 form-check">
+                    <input class="form-check-input" type="radio" name="term"
+                        id="term" checked readonly>
+                    <label class="form-check-label" for="flexRadioDefaul1">
+                        Use Terms
+                    </label>
                 </div>
             </div>
             <div class="mb-3 col-md-3">
-                <button type="submit" class="btn btn-primary">Edit</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </div>
         </form>
     </main>

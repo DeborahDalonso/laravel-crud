@@ -26,6 +26,7 @@
             <thead>
                 <tr>
                     <th scope="col">Id</th>
+                    <th scope="col">Image</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Street</th>
@@ -37,6 +38,7 @@
                 @foreach ($users as $user)
                     <tr>
                         <td class="col-1">{{ $user->id }}</td>
+                        <td><img src="{{ asset('storage/' . $user->image->image) }}" width="50%" alt=""></td>
                         <td class="col-1">{{ $user->name }}</td>
                         <td class="col-2">{{ $user->email }}</td>
                         <td class="col-1">{{ $user->address->street }}</td>

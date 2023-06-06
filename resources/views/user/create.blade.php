@@ -14,10 +14,10 @@
         <br>
         <h4>Create User</h4>
         <hr>
-        <form method="post" action="{{ route('user.store') }}" autocomplete="off">
+        <form method="post" action="{{ route('user.store') }}" autocomplete="off" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <div class="mb-3 col-md-3">
+                <div class="mb-3 col-md-4">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                         value="{{ old('name') }}">
@@ -27,7 +27,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="mb-3 col-md-3">
+                <div class="mb-3 col-md-4">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                         value="{{ old('email') }}">
@@ -37,7 +37,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="mb-3 col-md-3">
+                <div class="mb-3 col-md-4">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
                         value="{{ old('password') }}">
@@ -47,11 +47,9 @@
                         </div>
                     @enderror
                 </div>
-                <div class="form-group">
-                    <label for="password_confirmation" class="text-info">Confirm Password:</label><br>
-                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
-                </div>
-                <div class="mb-3 col-md-3">
+            </div>
+            <div class="row">
+                <div class="mb-3 col-md-5">
                     <label for="street" class="form-label">Street</label>
                     <input type="text" name="street" class="form-control @error('street') is-invalid @enderror"
                         value="{{ old('street') }}">
@@ -61,8 +59,6 @@
                         </div>
                     @enderror
                 </div>
-            </div>
-            <div class="row">
                 <div class="mb-3 col-md-3">
                     <label for="number" class="form-label">Number</label>
                     <input type="text" name="number" class="form-control @error('number') is-invalid @enderror"
@@ -73,6 +69,15 @@
                         </div>
                     @enderror
                 </div>
+                <div class="mb-3 col-md-4">
+                    <label for="password_confirmation" class="form-label">Confirm Password:</label><br>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+                </div>
+            </div>
+            <div class="form-group mb-3"> 
+                <input name="image" type="file" accept=".jpg, .png, .jpeg">
+            </div>
+            <div class="row">
                 <div class="mb-3 col-md-3 form-check">
                     <input class="form-check-input @error('term') is-invalid @enderror" type="radio" name="term"
                         id="term">

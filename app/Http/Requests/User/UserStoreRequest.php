@@ -28,6 +28,7 @@ class UserStoreRequest extends FormRequest
             'name' => 'required|string',
             'email' => 'required|email',
             'password' => 'required|string|confirmed',
+            'image' => 'required|file|mimetypes:image/jpeg,image/jpg,image/png|image:jpg,jpeg,png',
             'street' => 'required|string',
             'number' => 'required|string',
             'term' => 'accepted'

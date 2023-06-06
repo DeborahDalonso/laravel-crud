@@ -13,6 +13,11 @@ return [
     |
     */
 
+    //local é privado
+    //public é aberto
+    //s3 é a aws s3
+
+    //define o disco em que vamos trabalhar default como o que esta definido em FILESYSTEM_DISK, caso não exista essa constante em .env, usa o que é definido no segundo parametro
     'default' => env('FILESYSTEM_DISK', 'local'),
 
     /*
@@ -27,15 +32,17 @@ return [
     | Supported Drivers: "local", "ftp", "sftp", "s3"
     |
     */
-
+    //discos que podemos trabalhar
     'disks' => [
 
+        //upload para minha propria maquina. são aequivos que estão no projeto mas são arquivos que não estão disponiveis para o usuario. Ex: Arquivos de Configuração
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
             'throw' => false,
         ],
 
+        //upload para minha propria maquina. são arquivos dospiniveis para os usuarios, até para download. Ex:Imagens
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
@@ -44,6 +51,7 @@ return [
             'throw' => false,
         ],
 
+        //upload para um servidor S3 da Amazon.
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -69,6 +77,8 @@ return [
     |
     */
 
+    //você cria links simbolicos de acesso usando artisan storage:link, mas da pra criar aqui na mão e apontar pra uma pasta externa, com isso a
+    //chance de você perder documentos quando trocar o codigo no servidor é nula, by Anderson 
     'links' => [
         public_path('storage') => storage_path('app/public'),
     ],
