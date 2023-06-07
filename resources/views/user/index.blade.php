@@ -26,6 +26,7 @@
             <thead>
                 <tr>
                     <th scope="col">Id</th>
+                    {{-- <th scope="col">Iteração</th> --}}
                     <th scope="col">Image</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
@@ -35,43 +36,16 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $user)
-                    <tr>
-                        <td class="col-1">{{ $user->id }}</td>
-                        <td><img src="{{ asset('storage/' . $user->image->image) }}" width="50%" alt=""></td>
-                        <td class="col-1">{{ $user->name }}</td>
-                        <td class="col-2">{{ $user->email }}</td>
-                        <td class="col-1">{{ $user->address->street }}</td>
-                        <td class="col-1">{{ $user->address->number }}</td>
-                        <td class="col-6">
-                            <div class="row">
-                                <div class="mb-1 col-md-2">
-                                    <a href="{{ route('user.show', $user->id) }}" type="button"
-                                        class="btn btn-success">View</a>
-                                </div>
-                                <div class="mb-1 col-md-2">
-                                    <a href="{{ route('user.edit', $user->id) }}" type="button"
-                                        class="btn btn-warning">Edit</a>
-                                </div>
-                                <div class="mb-1 col-md-2">
-                                    <a href="{{ route('user.posts', $user->id) }}" type="button"
-                                        class="btn btn-primary">Posts</a>
-                                </div>
-                                <div class="mb-1 col-md-3">
-                                    <a href="{{ route('user.address', $user->id) }}" type="button"
-                                        class="btn btn-dark">Address</a>
-                                </div>
-                                <div class="mb-1 col-md-2">
-                                    <form method="post" action="{{ route('user.destroy', $user->id) }}">
-                                        @method('delete')
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
+                {{-- Passando novas variaveis dentro de include, atenção!! variaveis presentes no arquivo que chama o input já são herdados para as parts --}}
+                {{-- @include('user.__partials.loopUsers', ['teste' => 'teste']); --}}
+                {{-- @include('user.__partials.loopUsers') --}}
+                {{-- @includeIf('user.__partials.loopUsers') --}}
+                {{-- @includeWhen($aluno = true, 'user.__partials.loopUsers') --}}
+                {{-- @includeUnless($alunos = false, 'user.__partials.loopUsers') --}}
+                {{-- @each('user.__partials.loopUsers', $users, 'user') --}}
+                {{-- caso $users esteja vazio carrega o partials do ultimo parametro --}}
+                {{-- @each('user.__partials.loopUsers', $users, 'user', 'user.__partials.empty') --}}
+
             </tbody>
         </table>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
